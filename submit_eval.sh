@@ -16,6 +16,7 @@ MODEL_PATH=/path/to/your/model
 DATASET_DISK_PATH=/path/to/your/gms8k/dataset
 
 python eval.py \
-    --model_path $MODEL_PATH \
-    --dataset_path $DATASET_DISK_PATH \
+    --model_path /path/to/your/model \
+    --lora_path /path/to/your/lora \
+    --dataset_path /path/to/your/gms8k/dataset \
     --num_samples 500

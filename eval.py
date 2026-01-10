@@ -3,6 +3,7 @@ import os
 import torch
 from datasets import load_from_disk
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+from peft import PeftModel
 
 # Constants
 REASONING_START, REASONING_END = "<think>", "</think>"  # Fixed typo in </think>
@@ -40,6 +41,12 @@ def main():
         help="Path to merged model or base model",
     )
     parser.add_argument(
+        "--lora_path",
+        type=str,
+        required=False,
+        help="Path to merged model or base model",
+    )
+    parser.add_argument(
         "--dataset_path", type=str, required=True, help="Path to dataset folder"
     )
     parser.add_argument("--num_samples", type=int, default=None)
@@ -71,6 +78,15 @@ def main():
         device_map="auto",
         trust_remote_code=True,
     )
+    if args.lora_path:
+        print(f"🔗 Loading LoRA weights from: {args.lora_path}")
+        model = PeftModel.from_pretrained(
+            model,
+            args.lora_path,
+            torch_dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32,
+            device_map="auto",
+            trust_remote_code=True,
+        )
 
     generator = pipeline(
         "text-generation",
