@@ -2,11 +2,11 @@
 #SBATCH -p gpu
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=1
-#SBATCH --gres=gpu:4
+#SBATCH --gpus-per-node=4                     
 #SBATCH -t 01:00:00
-#SBATCH -o logs/eval_%j.out
 #SBATCH -A {your_project_id}                
 #SBATCH -J tutorial-grpo-eval            
+#SBATCH -o logs/eval_%j.out
 
 module load Mamba
 source activate /path/to/your/conda/env
