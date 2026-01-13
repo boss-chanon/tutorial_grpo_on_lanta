@@ -3,7 +3,14 @@
 This project implements Group Relative Policy Optimization (GRPO) for Reinforcement learning with Verifiable Rewards (RLVR), specifically optimized for mathematical reasoning tasks like GSM8K.
 
 ## Setup Instructions
-1. Environment Preparation
+1. Clone the Repository
+
+    First, clone the GRPO tutorial repository to your project directory on Lanta:
+    ```bash
+    git clone https://github.com/boss-chanon/tutorial_grpo_on_lanta.git
+    ```
+
+2. Environment Preparation
 
     Create a Conda environment on Lanta and install the required stack:
     ```bash
@@ -15,7 +22,7 @@ This project implements Group Relative Policy Optimization (GRPO) for Reinforcem
     pip install -r requirements.txt
     ```
 
-2. Download Data & Model to local
+3. Download Data & Model to local
 
     Supercomputer compute nodes often lack internet access. Use the Hugging Face CLI to download resources to a shared project directory:
     ```bash
