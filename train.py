@@ -15,7 +15,7 @@ from trl import GRPOConfig, GRPOTrainer
 import os
 
 REASONING_START = "<think>"
-REASONING_END = "</thnk>"
+REASONING_END = "</think>"
 ANSWER_START = "<answer>"
 ANSWER_END = "</answer>"
 
@@ -55,7 +55,7 @@ class ScriptArguments:
 
 def extract_xml_answer(text: str) -> str:
     try:
-        return text.split("<answer>")[-1].split("</answer>")[0].strip()
+        return text.split(ANSWER_START)[-1].split(ANSWER_END)[0].strip()
     except:
         return ""
 
@@ -123,7 +123,7 @@ def correctness_reward_func(prompts, completions, answer, **kwargs):
 
 
 def format_reward_func(completions, **kwargs):
-    pattern = r"<think>.*?</think>.*?<answer>.*?</answer>"
+    pattern = f"{re.escape(REASONING_START)}.*?{re.escape(REASONING_END)}.*?{re.escape(ANSWER_START)}.*?{re.escape(ANSWER_END)}"
     responses = [completion[0]["content"] for completion in completions]
     return [0.5 if re.search(pattern, r, re.DOTALL) else 0.0 for r in responses]
 
