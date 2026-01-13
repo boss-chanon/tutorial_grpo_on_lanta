@@ -35,7 +35,7 @@ accelerate launch \
     --num_processes 4 \
     --multi_gpu \
     --mixed_precision fp16 \
-    train_grpo.py \
+    train.py \
         --model_name /path/to/your/model \
         --dataset_path /path/to/your/gms8k/dataset \
         --use_lora True \
