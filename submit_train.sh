@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -p gpu
-#SBATCH -N 1                            
+#SBATCH -N 1 -c 32
 #SBATCH --ntasks-per-node=1
-#SBATCH --gpus-per-node=4                     
+#SBATCH --gpus-per-node=2                     
 #SBATCH -t 01:00:00
 #SBATCH -A {your_project_id}                
 #SBATCH -J tutorial-grpo-train            
@@ -32,7 +32,7 @@ export HF_DATASETS_CACHE=./.cache
 
 accelerate launch \
     --num_machines 1 \
-    --num_processes 4 \
+    --num_processes 2 \
     --multi_gpu \
     --mixed_precision fp16 \
     train.py \

@@ -26,8 +26,6 @@ This project implements Group Relative Policy Optimization (GRPO) for Reinforcem
 
     Supercomputer compute nodes often lack internet access. Use the Hugging Face CLI to download resources to a shared project directory:
     ```bash
-    #!/bin/bash
-
     module load Mamba
     conda activate ./env
 
