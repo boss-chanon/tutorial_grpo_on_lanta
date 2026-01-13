@@ -30,9 +30,6 @@ export HF_HOME=./.cache
 export HF_HUB_CACHE=./.cache
 export HF_DATASETS_CACHE=./.cache
 
-echo myuser=`whoami`
-echo "Total Nodes: ${#NODELIST[@]}"
-
 accelerate launch \
     --num_machines 1 \
     --num_processes 4 \
