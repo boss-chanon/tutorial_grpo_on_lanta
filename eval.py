@@ -44,12 +44,21 @@ def main():
         "--lora_path",
         type=str,
         required=False,
+        default=None,
         help="Path to merged model or base model",
     )
     parser.add_argument(
-        "--dataset_path", type=str, required=True, help="Path to dataset folder"
+        "--dataset_path",
+        type=str,
+        required=True,
+        help="Path to dataset folder",
     )
-    parser.add_argument("--num_samples", type=int, default=None)
+    parser.add_argument(
+        "--num_samples",
+        type=int,
+        required=False,
+        default=None,
+    )
     parser.add_argument(
         "--batch_size", type=int, default=4, help="Batch size for inference"
     )

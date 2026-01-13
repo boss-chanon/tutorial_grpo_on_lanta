@@ -11,10 +11,6 @@
 module load Mamba
 source activate /path/to/your/conda/env
 
-# Configuration
-MODEL_PATH=/path/to/your/model
-DATASET_DISK_PATH=/path/to/your/gms8k/dataset
-
 python eval.py \
     --model_path /path/to/your/model \
     --lora_path /path/to/your/lora \
