@@ -15,4 +15,4 @@ python eval.py \
     --model_path /path/to/your/model \
     --lora_path /path/to/your/lora \
     --dataset_path /path/to/your/gms8k/dataset \
-    --num_samples 500
+    --num_samples 10
