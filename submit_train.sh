@@ -30,11 +30,14 @@ export HF_HOME=./.cache
 export HF_HUB_CACHE=./.cache
 export HF_DATASETS_CACHE=./.cache
 
+export PORT=$(shuf -i 0-65535 -n 1)
+
 accelerate launch \
     --num_machines 1 \
     --num_processes 2 \
     --multi_gpu \
     --mixed_precision fp16 \
+    --main_process_port $PORT \
     train.py \
         --model_name /path/to/your/model \
         --dataset_path /path/to/your/gms8k/dataset \
